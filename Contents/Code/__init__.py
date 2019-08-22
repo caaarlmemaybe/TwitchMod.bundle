@@ -336,6 +336,7 @@ def TopGamesList(apiurl=None, limit=PAGE_LIMIT, offset=0,  **kwargs):
                                summary=unicode(game_summary),
                                thumb=Resource.ContentsOfURLWithFallback(
                                    game['game']['box']['medium'], fallback=ICONS['videos'])))
+    print(oc)
     if len(oc) >= limit:
         oc.add(NextPageObject(key=Callback(TopGamesList, offset=offset+limit),
                               title=unicode(L('more')), thumb=ICONS['more']))
