@@ -7,7 +7,7 @@ from DumbTools import DumbKeyboard, DumbPrefs
 TWITCH_API_BASE = 'https://api.twitch.tv/kraken'
 TWITCH_API_MIME_TYPE = "application/vnd.twitchtv.v{version}+json".format(version=5)
 TWITCH_CLIENT_ID = 'r797t9e3qhgxayiisuqdxxkh5tj7mlz'
-PAGE_LIMIT = 20
+PAGE_LIMIT = 3
 NAME = 'TwitchMod'
 PREFIX = '/video/twitchmod'
 ICON = 'icon-default.png'
