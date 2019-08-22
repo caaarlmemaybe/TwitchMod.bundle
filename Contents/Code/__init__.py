@@ -328,7 +328,8 @@ def TopGamesList(apiurl=None, limit=PAGE_LIMIT - 1, offset=0,  **kwargs):
                  api_request('/games/top', params={'limit': limit, 'offset': offset}))
     except APIError:
         return error_message(oc.title2, "Error")
-    for game in games['top']:
+    for gid, game in enumerate(games['top']):
+        print(gid)
         game_summary = "{} {}\n{} {}".format(game['channels'], L('channels'),
                                              game['viewers'], L('viewers'))
         oc.add(DirectoryObject(key=Callback(ChannelsForGameList, game=game['game']['name']),
@@ -336,7 +337,6 @@ def TopGamesList(apiurl=None, limit=PAGE_LIMIT - 1, offset=0,  **kwargs):
                                summary=unicode(game_summary),
                                thumb=Resource.ContentsOfURLWithFallback(
                                    game['game']['box']['medium'], fallback=ICONS['videos'])))
-    print(len(games['top']))
     print(len(oc))
     if len(oc) >= limit:
         oc.add(NextPageObject(key=Callback(TopGamesList, offset=offset+limit),
