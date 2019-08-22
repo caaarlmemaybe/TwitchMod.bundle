@@ -7,7 +7,7 @@ from DumbTools import DumbKeyboard, DumbPrefs
 TWITCH_API_BASE = 'https://api.twitch.tv/kraken'
 TWITCH_API_MIME_TYPE = "application/vnd.twitchtv.v{version}+json".format(version=5)
 TWITCH_CLIENT_ID = 'r797t9e3qhgxayiisuqdxxkh5tj7mlz'
-PAGE_LIMIT = 3
+PAGE_LIMIT = 20
 NAME = 'TwitchMod'
 PREFIX = '/video/twitchmod'
 ICON = 'icon-default.png'
@@ -321,7 +321,7 @@ def FeaturedStreamsList(apiurl=None, limit=PAGE_LIMIT, **kwargs):
 
 
 @route(PREFIX + '/games', limit=int, offset=int)
-def TopGamesList(apiurl=None, limit=PAGE_LIMIT, offset=0,  **kwargs):
+def TopGamesList(apiurl=None, limit=PAGE_LIMIT - 1, offset=0,  **kwargs):
     oc = ObjectContainer(title2=L('top_games'), no_cache=True)
     try:
         games = (api_request(apiurl) if apiurl is not None else
